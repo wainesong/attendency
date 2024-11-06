@@ -9,21 +9,21 @@
     <style>
         /* 主題顏色 */
         body {
-            --dark-bg: #2E3440;
-            --medium-bg: #3B4252;
-            --light-bg: #ECEFF4;
-            --primary: #81A1C1;
-            --secondary: #88C0D0;
-            --highlight: #A3BE8C;
+            --bg-light: #f9f9fb;
+            --bg-dark: #ffffff;
+            --accent: #81A1C1;
+            --highlight: #5E81AC;
+            --button-bg: #88C0D0;
+            --button-hover: #81A1C1;
+            --text-main: #3B4252;
+            --text-light: #f9f9fb;
             --warning: #BF616A;
-            --text-light: #ECEFF4;
-            --text-dark: #2E3440;
         }
 
         /* 全域樣式 */
         body {
-            background-color: var(--light-bg);
-            color: var(--text-dark);
+            background-color: var(--bg-light);
+            color: var(--text-main);
             font-family: Arial, "微軟正黑體", Helvetica, sans-serif;
             display: flex;
             justify-content: center;
@@ -36,20 +36,21 @@
         main {
             max-width: 90%;
             width: 800px;
-            background-color: var(--light-bg);
-            padding: 1rem 2rem;
+            background-color: var(--bg-dark);
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            color: var(--highlight);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            font-weight: bold;
         }
 
         h2 {
-            color: var(--highlight);
+            color: var(--text-main);
             font-size: 1.1rem;
             margin-top: 1rem;
         }
@@ -58,31 +59,32 @@
         nav {
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
             margin: 1.5rem 0;
         }
 
         button {
-            background-color: var(--primary);
+            background-color: var(--button-bg);
             color: var(--text-light);
             font-size: 1rem;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1rem;
             border-radius: 8px;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 30%;
+            width: 100%;
         }
 
         button:hover {
-            background-color: var(--secondary);
+            background-color: var(--button-hover);
         }
 
         /* 區塊樣式 */
         section {
             display: none;
             padding: 1rem;
-            background-color: var(--text-light);
+            background-color: var(--bg-dark);
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-top: 1rem;
@@ -102,10 +104,10 @@
         .search input {
             width: 60%;
             padding: 0.5rem;
-            border: 1px solid var(--medium-bg);
+            border: 1px solid var(--highlight);
             border-radius: 8px;
-            background-color: var(--light-bg);
-            color: var(--text-dark);
+            background-color: var(--bg-light);
+            color: var(--text-main);
         }
 
         .search button {
@@ -119,7 +121,7 @@
         }
 
         .search button:hover {
-            background-color: var(--secondary);
+            background-color: var(--button-hover);
         }
 
         /* 表格樣式 */
@@ -127,20 +129,21 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
+            color: var(--text-main);
         }
 
         thead tr {
-            background-color: var(--medium-bg);
+            background-color: var(--highlight);
             color: var(--text-light);
         }
 
         td, th {
             padding: 0.8rem;
-            border-bottom: 1px solid var(--medium-bg);
+            border-bottom: 1px solid var(--highlight);
         }
 
         tr:hover {
-            background-color: var(--highlight);
+            background-color: var(--button-hover);
             color: var(--text-light);
         }
 
