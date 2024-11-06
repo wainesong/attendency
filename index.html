@@ -343,6 +343,7 @@
                 historyTableBody.innerHTML = "";
                 data.forEach(record => {
                     const row = document.createElement("tr");
+                    const nameCell = document.createElement("td");
                     const timeCell = document.createElement("td");
                     const remainCell = document.createElement("td");
 
@@ -352,8 +353,10 @@
                         hour12: true
                     }).replace("-", "/").replace(" ", " ");
 
+                    nameCell.textContent = recordTime;
                     timeCell.textContent = recordTime;
                     remainCell.textContent = record.left;
+                    row.appendChild(nameCell);
                     row.appendChild(timeCell);
                     row.appendChild(remainCell);
                     historyTableBody.appendChild(row);
