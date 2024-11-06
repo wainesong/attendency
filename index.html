@@ -243,6 +243,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <td>姓名</td>
                             <td>時間</td>
                             <td>剩下課堂</td>
                         </tr>
@@ -286,7 +287,10 @@
         section.style.zIndex = 2;
     };
 
-    const searchA = () => showSection(historyDiv);
+    const searchA = () => {
+        showSection(historyDiv);
+        fetchHistoryRecords(); // 點擊查詢時也執行查詢
+    };
     const callA = () => showSection(callDiv);
     const addA = () => showSection(addDiv);
 
@@ -331,9 +335,8 @@
     };
 
     // 搜尋紀錄功能
-    searchBtn.addEventListener("click", () => {
+    const fetchHistoryRecords = (name = "") => {
         status.innerHTML = "搜尋中...";
-        const name = searchInput.value;
         const queryUrl = `${url}?type=search&name=${encodeURIComponent(name)}`;
 
         fetch(queryUrl)
@@ -342,6 +345,11 @@
                 historyTableBody.innerHTML = "";
                 data.forEach(record => {
                     const row = document.createElement("tr");
+
+                    // 新增姓名欄位
+                    const nameCell = document.createElement("td");
+                    nameCell.textContent = record.name; // 假設回傳的紀錄包含 "name" 欄位
+
                     const timeCell = document.createElement("td");
                     const remainCell = document.createElement("td");
 
@@ -353,8 +361,12 @@
 
                     timeCell.textContent = recordTime;
                     remainCell.textContent = record.left;
+
+                    // 將姓名、時間和剩餘課堂的欄位加入到行中
+                    row.appendChild(nameCell);
                     row.appendChild(timeCell);
                     row.appendChild(remainCell);
+
                     historyTableBody.appendChild(row);
                 });
                 status.innerHTML = "搜尋完成";
@@ -363,6 +375,12 @@
                 console.error("Error during search:", error);
                 status.innerHTML = `發生錯誤：${error}`;
             });
+    };
+
+    // 初始化時自動顯示所有歷史紀錄
+    document.addEventListener("DOMContentLoaded", () => {
+        showSection(historyDiv); // 頁面一開始顯示歷史紀錄區塊
+        fetchHistoryRecords();   // 頁面載入時列出所有紀錄
     });
 
     // 新增學生功能
@@ -385,6 +403,7 @@
         }
     });
 </script>
+
 
 
 </body>
