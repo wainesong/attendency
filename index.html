@@ -340,6 +340,8 @@
         fetch(queryUrl)
             .then(response => response.json())
             .then(data => {
+                console.log(data);
+                
                 historyTableBody.innerHTML = "";
                 data.forEach(record => {
                     const row = document.createElement("tr");
