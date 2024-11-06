@@ -6,223 +6,144 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendency</title>
-    <meta name="theme-color" content="3B4252" />
+    <meta name="theme-color" content="#3B4252" />
     <style>
-        h1 {
-            /* 標題顏色 */
-            color: var(--black)
+        /* 主題顏色 */
+        body {
+            --dark-bg: #2E3440;
+            --medium-bg: #3B4252;
+            --light-bg: #ECEFF4;
+            --primary: #81A1C1;
+            --secondary: #88C0D0;
+            --highlight: #A3BE8C;
+            --warning: #BF616A;
+            --text-light: #ECEFF4;
+            --text-dark: #2E3440;
         }
 
         body {
-            /* 背景顏色 */
-            background-color: white
-        }
-
-        body {
-            /* 可選顏色 */
-            --nord0: #2E3440;
-            --nord1: #3B4252;
-            --nord2: #434C5E;
-            --nord3: #4C566A;
-            --nord4: #D8DEE9;
-            --nord5: #E5E9F0;
-            --nord6: #ECEFF4;
-            --nord7: #8FBCBB;
-            --nord8: #88C0D0;
-            --nord9: #81A1C1;
-            --nord10: #5E81AC;
-            --nord11: #BF616A;
-            --nord12: #D08770;
-            --nord13: #EBCB8B;
-            --nord14: #A3BE8C;
-            --nord15: #B48EAD;
-            --black: #000;
-            --line: #4C566A
-        }
-
-        main,
-        nav {
-            display: flex
-        }
-
-        .call button,
-        button:hover {
-            background-color: var(--nord7)
-        }
-
-        button,
-        section>div {
-            background-color: var(--black);
-            box-shadow: rgba(0, 0, 0, .2) 0 0 .5rem
-        }
-
-        main,
-        section>div {
-            padding: 1rem;
-            width: 100%
-        }
-
-        footer,
-        footer a {
-            color: var(--nord4)
-        }
-
-        .search button,
-        button,
-        input,
-        section>div {
-            box-shadow: rgba(0, 0, 0, .2) 0 0 .5rem
-        }
-
-        body,
-        button,
-        h2,
-        html {
-            text-align: center
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
             font-family: Arial, "微軟正黑體", Helvetica, sans-serif;
-            color: var(--nord6)
+            text-align: center;
+            min-height: 100%;
+            margin: 0;
         }
 
-        body,
-        html {
-            min-height: 100%
-        }
-
-        main {
-            flex-direction: column;
-            height: 100vh;
-            height: 100dvh;
-            max-width: 80%;
-            margin: 0 auto
-        }
-
-        nav {
-            justify-content: space-between
-        }
-
-        button {
-            display: block;
-            height: 50px;
-            width: calc(1/3*100% - 1rem);
-            line-height: 40px;
-            border-radius: 1rem;
-            text-decoration: none;
-            font-size: 35px;
-            border: none;
-            cursor: pointer;
-            transition: background-color .2s ease-in-out
-        }
-
-        #call,
-        .search,
-        footer {
-            display: flex
-        }
-
-        .call button {
-            width: calc(1/4*100% - 1rem);
-            margin: .5rem
-        }
-
-        button:hover {
-            filter: brightness(1.2)
-        }
-
-        button:active {
-            background-color: var(--nord4);
-            filter: brightness(1.2)
-        }
-
-        section {
-            flex-grow: 1;
+        h1 {
+            color: var(--primary);
             margin: 1rem 0;
-            position: relative
-        }
-
-        footer {
-            justify-content: flex-end;
-            align-items: flex-end
-        }
-
-        section>div {
-            border-radius: 1rem;
-            overflow-x: hidden;
-            overflow-y: auto;
-            position: absolute;
-            height: 100%;
-            transition: opacity .5s ease-in-out
-        }
-
-        #add,
-        #history {
-            opacity: 0
-        }
-
-        #call {
-            z-index: 2;
-            flex-wrap: wrap;
-            justify-content: space-between
-        }
-
-        .search {
-            justify-content: center;
-            align-items: center
-        }
-
-        .search button,
-        input {
-            height: 2rem;
-            width: 50%;
-            border-radius: .5rem;
-            border: transparent;
-            padding: 0 1rem;
-            background-color: var(--nord3);
-            color: var(--nord4)
-        }
-
-        h2,
-        table {
-            width: 100%
-        }
-
-        input:focus {
-            outline: transparent
-        }
-
-        .search button {
-            margin-left: 1rem;
-            width: auto;
-            line-height: 100%
-        }
-
-        table {
-            border-collapse: collapse;
-            margin-top: 1rem
-        }
-
-        tr {
-            border-bottom: 1px solid var(--line)
-        }
-
-        td {
-            padding: .5rem
         }
 
         h2 {
-            margin-top: 2rem;
-            font-weight: 600
+            color: var(--highlight);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        main {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem 0;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: var(--text-light);
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: var(--secondary);
+        }
+
+        section {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        section.active {
+            opacity: 1;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .search input {
+            padding: 0.5rem;
+            width: 60%;
+            border: 1px solid var(--medium-bg);
+            border-radius: 8px;
+            margin-right: 0.5rem;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        .search button {
+            padding: 0.5rem 1rem;
+            background-color: var(--highlight);
+            color: var(--text-light);
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search button:hover {
+            background-color: var(--secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        thead tr {
+            background-color: var(--medium-bg);
+            color: var(--text-light);
+        }
+
+        td, th {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--medium-bg);
+        }
+
+        tr:hover {
+            background-color: var(--highlight);
+            color: var(--text-light);
         }
 
         #status {
-            margin: .5rem 0 1rem;
-            color: var(--nord13);
-            font-size: 1.3rem
+            margin: 1rem 0;
+            color: var(--warning);
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -232,208 +153,159 @@
         <h1>Attendency</h1>
         <h2 id="status">For CNUP pharmacology lab use only.</h2>
         <nav>
-            <button onclick="searchA()">查詢紀錄</button><button onclick="callA()">點名</button><button
-                onclick="addA()">新增學生</button>
+            <button onclick="searchA()">查詢紀錄</button>
+            <button onclick="callA()">點名</button>
+            <button onclick="addA()">新增學生</button>
         </nav>
-        <section>
-            <div id="history">
-                <div class="search">
-                    <input type="text"><button>搜尋</button>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>姓名</td>
-                            <td>時間</td>
-                            <td>剩下課堂</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+        <section id="history" class="active">
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="輸入姓名以查詢">
+                <button id="searchBtn">搜尋</button>
             </div>
-            <div id="call">
-                <h2>Loading</h2>
-            </div>
-            <div id="add">
-                <div class="search"><input type="text"><button>新增</button></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>時間</th>
+                        <th>剩下課堂</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                </tbody>
+            </table>
+        </section>
+        <section id="call">
+            <h2>Loading</h2>
+        </section>
+        <section id="add">
+            <div class="search">
+                <input type="text" id="addInput" placeholder="輸入姓名以新增">
+                <button id="addBtn">新增</button>
             </div>
         </section>
-        <footer>
-        </footer>
     </main>
-<script>
-    // API URL 設定
-    const url = "https://script.google.com/macros/s/AKfycbxplOqWmQrGGPJD_gHbnf1ywiioBfWiNB9huTpo09I1xJGgdqEFwJSLHbMV_GW3JeGFLA/exec";
+    <script>
+        const url = "https://script.google.com/macros/s/AKfycbxplOqWmQrGGPJD_gHbnf1ywiioBfWiNB9huTpo09I1xJGgdqEFwJSLHbMV_GW3JeGFLA/exec";
+        const historyDiv = document.getElementById("history");
+        const callDiv = document.getElementById("call");
+        const addDiv = document.getElementById("add");
+        const status = document.getElementById("status");
+        const searchBtn = document.getElementById("searchBtn");
+        const searchInput = document.getElementById("searchInput");
+        const historyTableBody = document.getElementById("historyTableBody");
+        const addBtn = document.getElementById("addBtn");
+        const addInput = document.getElementById("addInput");
 
-    // 頁面元素選取
-    const historyDiv = document.getElementById("history");
-    const callDiv = document.getElementById("call");
-    const addDiv = document.getElementById("add");
-    const status = document.getElementById("status");
-    const searchBtn = document.querySelector("#history button");
-    const searchInput = document.querySelector("#history input");
-    const historyTableBody = document.querySelector("#history tbody");
-    const addBtn = document.querySelector("#add button");
-    const addInput = document.querySelector("#add input");
+        const showSection = (section) => {
+            [historyDiv, callDiv, addDiv].forEach(div => div.classList.remove("active"));
+            section.classList.add("active");
+        };
 
-    // 功能切換：查詢紀錄、點名、新增學生
-    const showSection = (section) => {
-        [historyDiv, callDiv, addDiv].forEach(div => {
-            div.style.opacity = 0;
-            div.style.zIndex = 1;
-        });
-        section.style.opacity = 1;
-        section.style.zIndex = 2;
-    };
+        const searchA = () => {
+            showSection(historyDiv);
+            fetchHistoryRecords();
+        };
+        const callA = () => showSection(callDiv);
+        const addA = () => showSection(addDiv);
 
-    const searchA = () => {
-    showSection(historyDiv); // 顯示查詢記錄分頁
-    fetchHistoryRecords();   // 自動載入所有紀錄
-};
-    const callA = () => showSection(callDiv);
-    const addA = () => showSection(addDiv);
-    
-    // 定義函數 fetchHistoryRecords 來獲取所有紀錄
-const fetchHistoryRecords = (name = "") => {
-    status.innerHTML = "載入紀錄中...";
-    const queryUrl = `${url}?type=search&name=${encodeURIComponent(name)}`;
+        const fetchHistoryRecords = (name = "") => {
+            status.innerHTML = "載入紀錄中...";
+            const queryUrl = `${url}?type=search&name=${encodeURIComponent(name)}`;
+            fetch(queryUrl)
+                .then(response => response.json())
+                .then(data => {
+                    historyTableBody.innerHTML = "";
+                    data.forEach(record => {
+                        const row = document.createElement("tr");
+                        const nameCell = document.createElement("td");
+                        const timeCell = document.createElement("td");
+                        const remainCell = document.createElement("td");
 
-    fetch(queryUrl)
-        .then(response => response.json())
-        .then(data => {
-            historyTableBody.innerHTML = ""; // 清空表格
-            data.forEach(record => {
-                const row = document.createElement("tr");
-                const nameCell = document.createElement("td");
-                const timeCell = document.createElement("td");
-                const remainCell = document.createElement("td");
+                        const recordTime = new Date(record.time).toLocaleString("zh-TW", {
+                            year: "numeric", month: "2-digit", day: "2-digit",
+                            hour: "numeric", minute: "numeric", second: "numeric",
+                            hour12: true
+                        }).replace("-", "/").replace(" ", " ");
 
-                const recordTime = new Date(record.time).toLocaleString("zh-TW", {
-                    year: "numeric", month: "2-digit", day: "2-digit",
-                    hour: "numeric", minute: "numeric", second: "numeric",
-                    hour12: true
-                }).replace("-", "/").replace(" ", " ");
+                        nameCell.textContent = record.name;
+                        timeCell.textContent = recordTime;
+                        remainCell.textContent = record.left;
 
-                nameCell.textContent = record.name;
-                timeCell.textContent = recordTime;
-                remainCell.textContent = record.left;
-                
-                row.appendChild(nameCell);
-                row.appendChild(timeCell);
-                row.appendChild(remainCell);
-                historyTableBody.appendChild(row);
-            });
-            status.innerHTML = "紀錄已載入";
-        })
-        .catch(error => {
-            console.error("Error loading records:", error);
-            status.innerHTML = `發生錯誤：${error}`;
-        });
-};
+                        row.appendChild(nameCell);
+                        row.appendChild(timeCell);
+                        row.appendChild(remainCell);
+                        historyTableBody.appendChild(row);
+                    });
+                    status.innerHTML = "紀錄已載入";
+                })
+                .catch(error => {
+                    console.error("Error loading records:", error);
+                    status.innerHTML = `發生錯誤：${error}`;
+                });
+        };
 
-    // 點名按鈕初始化
-    fetch(`${url}?type=list`)
-        .then(response => response.json())
-        .then(data => {
-            callDiv.innerHTML = "";
-            data.forEach((student, index) => {
-                const button = document.createElement("button");
-                button.textContent = student.name;
-                button.id = `student-${index + 1}`;
-                button.addEventListener("click", () => rollCall(student.name, student.left, index + 1));
-                callDiv.appendChild(button);
-            });
-        })
-        .catch(error => console.error("Error loading student list:", error));
-
-    // 點名功能
-    const rollCall = (name, remainingClasses, id) => {
-        status.innerHTML = `${name} 點名中...`;
-        const time = new Date().toLocaleString("zh-TW", {
-            year: "numeric", month: "2-digit", day: "2-digit",
-            hour: "numeric", minute: "numeric", second: "numeric",
-            hour12: true
-        }).replace("-", "/").replace(" ", " ");
-
-        fetch(`${url}?type=call&name=${name}&time=${time}&remain=${remainingClasses}`)
-            .then(response => {
-                if (response.ok) {
-                    status.innerHTML = `${name} 已點名成功！剩餘課堂：${remainingClasses - 1}`;
-                    document.getElementById(`student-${id}`).style.backgroundColor = "var(--nord10)";
-                } else {
-                    status.innerHTML = `${name} 已點名失敗！剩餘課堂：${remainingClasses}`;
-                    document.getElementById(`student-${id}`).style.backgroundColor = "var(--nord11)";
-                }
-            })
-            .catch(error => {
-                console.error("Error during roll call:", error);
-                status.innerHTML = `發生錯誤：${error}`;
-            });
-    };
-
-    // 搜尋紀錄功能
-    searchBtn.addEventListener("click", () => {
-        status.innerHTML = "搜尋中...";
-        const name = searchInput.value;
-        const queryUrl = `${url}?type=search&name=${encodeURIComponent(name)}`;
-
-        fetch(queryUrl)
+        fetch(`${url}?type=list`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                
-                historyTableBody.innerHTML = "";
-                data.forEach(record => {
-                    const row = document.createElement("tr");
-                    const nameCell = document.createElement("td");
-                    const timeCell = document.createElement("td");
-                    const remainCell = document.createElement("td");
-
-                    const recordTime = new Date(record.time).toLocaleString("zh-TW", {
-                        year: "numeric", month: "2-digit", day: "2-digit",
-                        hour: "numeric", minute: "numeric", second: "numeric",
-                        hour12: true
-                    }).replace("-", "/").replace(" ", " ");
-
-                    nameCell.textContent = record.name;
-                    timeCell.textContent = recordTime;
-                    remainCell.textContent = record.left;
-                    row.appendChild(nameCell);
-                    row.appendChild(timeCell);
-                    row.appendChild(remainCell);
-                    historyTableBody.appendChild(row);
+                callDiv.innerHTML = "";
+                data.forEach((student, index) => {
+                    const button = document.createElement("button");
+                    button.textContent = student.name;
+                    button.id = `student-${index + 1}`;
+                    button.addEventListener("click", () => rollCall(student.name, student.left, index + 1));
+                    callDiv.appendChild(button);
                 });
-                status.innerHTML = "搜尋完成";
             })
-            .catch(error => {
-                console.error("Error during search:", error);
-                status.innerHTML = `發生錯誤：${error}`;
-            });
-    });
+            .catch(error => console.error("Error loading student list:", error));
 
-    // 新增學生功能
-    addBtn.addEventListener("click", () => {
-        const name = addInput.value;
-        if (name) {
-            status.innerHTML = "新增中...";
-            fetch(`${url}?type=new&name=${encodeURIComponent(name)}`)
+        const rollCall = (name, remainingClasses, id) => {
+            status.innerHTML = `${name} 點名中...`;
+            const time = new Date().toLocaleString("zh-TW", {
+                year: "numeric", month: "2-digit", day: "2-digit",
+                hour: "numeric", minute: "numeric", second: "numeric",
+                hour12: true
+            }).replace("-", "/").replace(" ", " ");
+            fetch(`${url}?type=call&name=${name}&time=${time}&remain=${remainingClasses}`)
                 .then(response => {
                     if (response.ok) {
-                        status.innerHTML = "新增成功";
+                        status.innerHTML = `${name} 已點名成功！剩餘課堂：${remainingClasses - 1}`;
+                        document.getElementById(`student-${id}`).style.backgroundColor = "var(--highlight)";
                     } else {
-                        status.innerHTML = "新增失敗";
+                        status.innerHTML = `${name} 已點名失敗！剩餘課堂：${remainingClasses}`;
+                        document.getElementById(`student-${id}`).style.backgroundColor = "var(--warning)";
                     }
                 })
                 .catch(error => {
-                    console.error("Error adding student:", error);
+                    console.error("Error during roll call:", error);
                     status.innerHTML = `發生錯誤：${error}`;
                 });
-        }
-    });
-</script>
+        };
 
+        searchBtn.addEventListener("click", () => {
+            status.innerHTML = "搜尋中...";
+            const name = searchInput.value;
+            fetchHistoryRecords(name);
+        });
 
+        addBtn.addEventListener("click", () => {
+            const name = addInput.value;
+            if (name) {
+                status.innerHTML = "新增中...";
+                fetch(`${url}?type=new&name=${encodeURIComponent(name)}`)
+                    .then(response => {
+                        if (response.ok) {
+                            status.innerHTML = "新增成功";
+                        } else {
+                            status.innerHTML = "新增失敗";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error adding student:", error);
+                        status.innerHTML = `發生錯誤：${error}`;
+                    });
+            }
+        });
+    </script>
 </body>
 
 </html>
