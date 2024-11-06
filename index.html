@@ -287,9 +287,50 @@
         section.style.zIndex = 2;
     };
 
-    const searchA = () => showSection(historyDiv);
+    const searchA = () => {
+    showSection(historyDiv); // 顯示查詢記錄分頁
+    fetchHistoryRecords();   // 自動載入所有紀錄
+};
     const callA = () => showSection(callDiv);
     const addA = () => showSection(addDiv);
+    
+    // 定義函數 fetchHistoryRecords 來獲取所有紀錄
+const fetchHistoryRecords = (name = "") => {
+    status.innerHTML = "載入紀錄中...";
+    const queryUrl = `${url}?type=search&name=${encodeURIComponent(name)}`;
+
+    fetch(queryUrl)
+        .then(response => response.json())
+        .then(data => {
+            historyTableBody.innerHTML = ""; // 清空表格
+            data.forEach(record => {
+                const row = document.createElement("tr");
+                const nameCell = document.createElement("td");
+                const timeCell = document.createElement("td");
+                const remainCell = document.createElement("td");
+
+                const recordTime = new Date(record.time).toLocaleString("zh-TW", {
+                    year: "numeric", month: "2-digit", day: "2-digit",
+                    hour: "numeric", minute: "numeric", second: "numeric",
+                    hour12: true
+                }).replace("-", "/").replace(" ", " ");
+
+                nameCell.textContent = record.name;
+                timeCell.textContent = recordTime;
+                remainCell.textContent = record.left;
+                
+                row.appendChild(nameCell);
+                row.appendChild(timeCell);
+                row.appendChild(remainCell);
+                historyTableBody.appendChild(row);
+            });
+            status.innerHTML = "紀錄已載入";
+        })
+        .catch(error => {
+            console.error("Error loading records:", error);
+            status.innerHTML = `發生錯誤：${error}`;
+        });
+};
 
     // 點名按鈕初始化
     fetch(`${url}?type=list`)
